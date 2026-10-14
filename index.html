@@ -45,9 +45,22 @@
           <select name="decor">
             <option value="sunrise">Sun, rays and hills</option>
             <option value="circle">Accent circle</option>
+            <option value="rings">Rings</option>
+            <option value="waves">Waves</option>
+            <option value="dots">Halftone dots</option>
+            <option value="glow">Soft glow</option>
+            <option value="stripes">Diagonal stripes</option>
+            <option value="confetti">Confetti</option>
+            <option value="night">Moon and stars</option>
             <option value="none">None</option>
           </select>
         </label>
+        <div class="colors">
+          <label><input type="checkbox" name="decorMatchAccent"> Use accent color</label>
+          <label><input type="color" name="decorColor"> Decoration color</label>
+        </div>
+        <label>Decoration intensity <output id="decor-opacity-out"></output>
+          <input type="range" name="decorOpacity" min="0.2" max="1" step="0.05"></label>
         <label>Font <span class="hint">Optional TTF, OTF or WOFF. Defaults to Plus Jakarta Sans.</span>
           <input type="file" id="font-file" accept=".ttf,.otf,.woff,.woff2"></label>
       </fieldset>

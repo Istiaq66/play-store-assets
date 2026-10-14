@@ -16,6 +16,9 @@ const DEFAULTS = {
   logoTile: '#f4f5eb',
   frame: '#0b1a12',
   decor: 'sunrise',
+  decorMatchAccent: true,
+  decorColor: '#e0ac4a',
+  decorOpacity: 1,
   iconPadding: 0.12,
 };
 
@@ -104,19 +107,33 @@ async function addScreens(files) {
 
 // --------------------------------------------------------------- the form
 
+/** Updates the readouts and the inputs that depend on other settings. */
+function syncDependents() {
+  $('#padding-out').textContent = `${Math.round(settings.iconPadding * 100)}%`;
+  $('#decor-opacity-out').textContent = `${Math.round(settings.decorOpacity * 100)}%`;
+  // While matching the accent, the picker shows the accent and is locked.
+  const picker = form.elements.decorColor;
+  picker.disabled = settings.decorMatchAccent;
+  picker.value = settings.decorMatchAccent ? settings.accent : settings.decorColor;
+}
+
 function syncForm() {
   for (const el of form.elements) {
     if (!el.name || !(el.name in settings)) continue;
-    el.value = settings[el.name];
+    if (el.type === 'checkbox') el.checked = settings[el.name];
+    else el.value = settings[el.name];
   }
-  $('#padding-out').textContent = `${Math.round(settings.iconPadding * 100)}%`;
+  syncDependents();
 }
 
 form.addEventListener('input', (e) => {
   const el = e.target;
   if (!el.name || !(el.name in DEFAULTS)) return;
-  settings[el.name] = el.type === 'range' ? Number(el.value) : el.value;
-  if (el.name === 'iconPadding') $('#padding-out').textContent = `${Math.round(settings.iconPadding * 100)}%`;
+  if (el.type === 'checkbox') settings[el.name] = el.checked;
+  else settings[el.name] = el.type === 'range' ? Number(el.value) : el.value;
+  // Unlinking starts the decoration color from the accent, so nothing jumps.
+  if (el.name === 'decorMatchAccent' && !el.checked) settings.decorColor = settings.accent;
+  syncDependents();
   save();
   schedule();
 });
@@ -346,6 +363,8 @@ $('#load-example').addEventListener('click', async () => {
     logoTile: '#f4f5eb',
     frame: '#0b1a12',
     decor: 'sunrise',
+    decorMatchAccent: true,
+    decorOpacity: 1,
     iconPadding: 0,
     featureScreen: 0,
   });

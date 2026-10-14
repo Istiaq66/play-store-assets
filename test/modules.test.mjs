@@ -102,3 +102,12 @@ test('fitText shrinks the size until the text fits', () => {
   assert.ok(r.lines.length <= 2);
   assert.ok(r.lines.every((l) => (l.length * r.size) / 2 <= 500));
 });
+
+test('every decoration in the form has a renderer, and vice versa', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const { DECORATIONS } = await import('../js/render.js');
+  const html = await readFile(new URL('../index.html', import.meta.url), 'utf8');
+  const select = html.match(/<select name="decor">([\s\S]*?)<\/select>/)[1];
+  const options = [...select.matchAll(/value="([^"]+)"/g)].map((m) => m[1]);
+  assert.deepEqual(options.sort(), Object.keys(DECORATIONS).sort());
+});
