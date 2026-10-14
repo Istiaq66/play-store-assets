@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Play Store Assets</title>
+  <meta name="description" content="Make a Google Play app icon, feature graphic and captioned screenshots from your logo and screenshots, in your browser.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/app.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Play Store Assets</h1>
+      <p>Make your Google Play icon, feature graphic and captioned screenshots. Everything runs in your browser; your images never leave your device.</p>
+    </div>
+    <div class="top-actions">
+      <button type="button" id="load-example" class="secondary">Load example</button>
+      <button type="button" id="download-all">Download all (.zip)</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <form class="setup" id="setup" autocomplete="off">
+      <fieldset>
+        <legend>App</legend>
+        <label>App name <input name="name" maxlength="60"></label>
+        <label>Tagline <span class="hint">Shown on the feature graphic. Press Enter for a new line.</span>
+          <textarea name="tagline" rows="2" maxlength="120"></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Brand</legend>
+        <div class="colors">
+          <label><input type="color" name="background"> Background</label>
+          <label><input type="color" name="text"> Text</label>
+          <label><input type="color" name="muted"> Tagline</label>
+          <label><input type="color" name="accent"> Accent</label>
+          <label><input type="color" name="iconBackground"> Icon background</label>
+          <label><input type="color" name="logoTile"> Logo tile</label>
+          <label><input type="color" name="frame"> Phone frame</label>
+        </div>
+        <label>Decoration
+          <select name="decor">
+            <option value="sunrise">Sun, rays and hills</option>
+            <option value="circle">Accent circle</option>
+            <option value="none">None</option>
+          </select>
+        </label>
+        <label>Font <span class="hint">Optional TTF, OTF or WOFF. Defaults to Plus Jakarta Sans.</span>
+          <input type="file" id="font-file" accept=".ttf,.otf,.woff,.woff2"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Logo and icon</legend>
+        <label>Logo <span class="hint">SVG works best. Used on the feature graphic and, unless replaced below, the icon.</span>
+          <input type="file" id="logo-file" accept="image/*,.svg"></label>
+        <label>Icon artwork <span class="hint">Optional. A full-bleed square version of your logo for the icon.</span>
+          <input type="file" id="icon-file" accept="image/*,.svg"></label>
+        <label>Icon padding <output id="padding-out"></output>
+          <input type="range" name="iconPadding" min="0" max="0.3" step="0.01"></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Screenshots</legend>
+        <label>Add screenshots <span class="hint">Portrait captures from your phone or emulator, ideally 1080px wide.</span>
+          <input type="file" id="screens-file" accept="image/*" multiple></label>
+        <ol id="screen-list" class="screen-list"></ol>
+      </fieldset>
+    </form>
+
+    <section class="preview" aria-label="Preview">
+      <article class="asset" data-kind="icon">
+        <header><h2>App icon <span>512 × 512</span></h2><button type="button" data-download="icon" class="secondary">Download</button></header>
+        <canvas id="icon-canvas" width="512" height="512" class="icon-canvas"></canvas>
+        <p class="status" id="icon-status"></p>
+      </article>
+
+      <article class="asset" data-kind="feature">
+        <header><h2>Feature graphic <span>1024 × 500</span></h2><button type="button" data-download="feature" class="secondary">Download</button></header>
+        <canvas id="feature-canvas" width="1024" height="500"></canvas>
+        <p class="status" id="feature-status"></p>
+      </article>
+
+      <article class="asset" data-kind="screenshot">
+        <header><h2>Phone screenshots <span>1080 × 1920</span></h2></header>
+        <div id="shots" class="shots"></div>
+        <p class="empty" id="shots-empty">Add screenshots to see them captioned here.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Default font: Plus Jakarta Sans (SIL Open Font License, <a href="fonts/OFL.txt">license</a>). Check Google Play's current asset requirements before you publish.</p>
+  </footer>
+</body>
+</html>

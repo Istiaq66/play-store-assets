@@ -1,0 +1,14 @@
+{
+  "name": "play-store-assets",
+  "version": "0.1.0",
+  "description": "Make a Google Play app icon, feature graphic and captioned screenshots in the browser.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node serve.mjs",
+    "test": "node --test \"test/*.test.mjs\""
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

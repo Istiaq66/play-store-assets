@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="512" height="512">
+  <clipPath id="frame"><rect x="0" y="0" width="192" height="186"/></clipPath>
+  <g clip-path="url(#frame)">
+  <!-- Rays: 10x26, centered 94 units from (96,112.5). -->
+  <g>
+    <rect x="91" y="5.5" width="10" height="26" fill="#FFFF80" transform="rotate(-60 96 112.5)"/>
+    <rect x="91" y="5.5" width="10" height="26" fill="#FFFF80" transform="rotate(-30 96 112.5)"/>
+    <rect x="91" y="5.5" width="5" height="26" fill="#FFFF80"/>
+    <rect x="96" y="5.5" width="5" height="26" fill="#FFC34D"/>
+    <rect x="91" y="5.5" width="10" height="26" fill="#FFC34D" transform="rotate(30 96 112.5)"/>
+    <rect x="91" y="5.5" width="10" height="26" fill="#FFC34D" transform="rotate(60 96 112.5)"/>
+  </g>
+  <!-- Sun: two halves of a circle, center (96,114.45), r 70.45. -->
+  <path d="M96 44 A70.45 70.45 0 0 0 96 184.9 Z" fill="#FFC34D"/>
+  <path d="M96 44 A70.45 70.45 0 0 1 96 184.9 Z" fill="#FF884D"/>
+  <!-- Hills: arcs of r 195 centered at (0,292) and (192,292), meeting at x=96. -->
+  <path d="M-20 98.03 A195 195 0 0 1 96 122.27 L96 260 L-20 260 Z" fill="#29CC95"/>
+  <path d="M96 122.27 A195 195 0 0 1 212 98.03 L212 260 L96 260 Z" fill="#146666"/>
+  <path d="M96 123 L212 201.5 L212 260 L96 260 Z" fill="#00A98F"/>
+  </g>
+</svg>
